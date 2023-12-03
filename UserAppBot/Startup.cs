@@ -4,12 +4,14 @@ global using Discord.WebSocket;
 
 global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.Logging;
-using DiscordNetTemplate.Services;
+using UserAppBot.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Serilog;
+using org.mariuszgromada.math.mxparser;
 
+License.iConfirmNonCommercialUse("Yup Ok Sure");
 
 var builder = new HostBuilder();
 
