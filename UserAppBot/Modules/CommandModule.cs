@@ -25,7 +25,7 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
     }
 
     [NsfwCommand(true)]
-    [SlashCommand("msfw-test", "Just a NSFW command")]
+    [SlashCommand("nsfw-test", "Just a NSFW command")]
     public async Task NsfwCmd()
     {
         await RespondAsync("Hello There!\nc===3", ephemeral: true);
