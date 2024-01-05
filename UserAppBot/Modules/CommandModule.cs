@@ -167,45 +167,45 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
 	}
 
 	[SlashCommand("options-test-2", "Just second a test command with a lot of parameters")]
-	public async Task OptionsTestAsync1([Summary("parameter0", "Just a description")] string? parameter1 = null,
+	public async Task OptionsTestAsync1([Summary("parameter0", "Just a description")] string? parameter1,
 		[Summary("parameter1", "Just a description")]
-		string? parameter2 = null,
+		string? parameter2,
 		[Summary("parameter2", "Just a description")]
-		string? parameter3 = null,
+		string? parameter3,
 		[Summary("parameter3", "Just a description")]
-		string? parameter4 = null,
+		string? parameter4,
 		[Summary("parameter4", "Just a description")]
-		string? parameter5 = null,
+		string? parameter5,
 		[Summary("parameter5", "Just a description")]
-		string? parameter6 = null,
+		string? parameter6,
 		[Summary("parameter6", "Just a description")]
-		string? parameter7 = null,
+		string? parameter7,
 		[Summary("parameter7", "Just a description")]
-		string? parameter8 = null,
+		string? parameter8,
 		[Summary("parameter8", "Just a description")]
-		string? parameter9 = null,
+		string? parameter9,
 		[Summary("parameter9", "Just a description")]
-		string? parameter10 = null,
+		string? parameter10,
 		[Summary("parameter10", "Just a description")]
-		string? parameter11 = null,
+		string? parameter11,
 		[Summary("parameter11", "Just a description")]
-		string? parameter12 = null,
+		string? parameter12,
 		[Summary("parameter12", "Just a description")]
-		string? parameter13 = null,
+		string? parameter13,
 		[Summary("parameter13", "Just a description")]
-		string? parameter14 = null,
+		string? parameter14,
 		[Summary("parameter14", "Just a description")]
-		string? parameter15 = null,
+		string? parameter15,
 		[Summary("parameter15", "Just a description")]
-		string? parameter16 = null,
+		string? parameter16,
 		[Summary("parameter16", "Just a description")]
-		string? parameter17 = null,
+		string? parameter17,
 		[Summary("parameter17", "Just a description")]
-		string? parameter18 = null,
+		string? parameter18,
 		[Summary("parameter18", "Just a description")]
-		string? parameter19 = null,
+		string? parameter19,
 		[Summary("parameter19", "Just a description")]
-		string? parameter20 = null)
+		string? parameter20)
 	{
 		await RespondAsync("Ok");
 	}
