@@ -5,7 +5,7 @@ using org.mariuszgromada.math.mxparser;
 namespace UserAppBot.Modules;
 
 [CommandContextType(ApplicationCommandContextType.BotDm, ApplicationCommandContextType.PrivateChannel, ApplicationCommandContextType.Guild)]
-[IntegrationType(ApplicationIntegrationType.UserInstall)]
+[IntegrationType(ApplicationIntegrationType.UserInstall, ApplicationIntegrationType.GuildInstall)]
 public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBase<SocketInteractionContext>
 {
     [SlashCommand("test", "Just a test command")]
