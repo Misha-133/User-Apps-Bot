@@ -33,7 +33,7 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
             return;
         }
 
-        await RespondAsync(message.Length);
+        await RespondAsync(message.Length.ToString());
     }
 
     [NsfwCommand(true)]
