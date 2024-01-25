@@ -24,6 +24,18 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
         await RespondAsync(message);
     }
 
+    [SlashCommand("length", "Get the length of provided string")]
+    public async Task LengthCmd(string message)
+    {
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            await RespondAsync("Empty string", ephemeral: true);
+            return;
+        }
+
+        await RespondAsync(message.Length.ToString());
+    }
+
     [NsfwCommand(true)]
     [SlashCommand("nsfw-test", "Just a NSFW command")]
     public async Task NsfwCmd()
