@@ -225,14 +225,18 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
  	[SlashCommand("update-test", "TestUpdate")]
   	public async Task TestUpdateAsync()
    	{
-		await RespondAsync(components: new ComponentBuilder().WithButton("UPDATE", "update-btn").Build());
+		await RespondAsync(components: new ComponentBuilder().WithButton("UPDATE", "update-btn-0", style: ButtonStyle.Success).Build());
     	}
 
-     	[ComponentInteraction("update-btn")]
-      	public async Task UpdateBtnAsync()
+     	[ComponentInteraction("update-btn-*")]
+      	public async Task UpdateBtnAsync(int count)
         {
        		var interaction = (IComponentInteraction)Context.Interaction;
-	 	await interaction.UpdateAsync(x => x.Content = "Get Updated LOL https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+	 	await interaction.UpdateAsync(x => 
+   						{
+   							x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
+							x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}").Build()
+	 					});
 	}
 
 }
