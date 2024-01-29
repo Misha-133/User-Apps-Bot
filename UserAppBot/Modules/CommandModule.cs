@@ -222,5 +222,17 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
 		await RespondAsync("Ok");
 	}
 
+ 	[SlashCommand("update-test", "TestUpdate")]
+  	public async Task TestUpdateAsync()
+   	{
+		await RespondAsync(components: new ComponentBuilder.WithButton("UPDATE", "update-btn").Build());
+    	}
+
+     	[ComponentInteraction("update-btn")]
+      	public async Task UpdateBtnAsync()
+        {
+       		var interaction = (IComponentInteraction)Context.Interaction;
+	 	await interaction.UpdateAsync(x => x.Context = "Get Updated LOL https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+	}
 
 }
