@@ -225,7 +225,7 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
  	[SlashCommand("update-test", "TestUpdate")]
   	public async Task TestUpdateAsync()
    	{
-		await RespondAsync(components: new ComponentBuilder.WithButton("UPDATE", "update-btn").Build());
+		await RespondAsync(components: new ComponentBuilder().WithButton("UPDATE", "update-btn").Build());
     	}
 
      	[ComponentInteraction("update-btn")]
