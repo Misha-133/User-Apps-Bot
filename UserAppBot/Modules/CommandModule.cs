@@ -225,7 +225,8 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
  	[SlashCommand("update-test", "TestUpdate")]
   	public async Task TestUpdateAsync()
    	{
-		await RespondAsync(components: new ComponentBuilder().WithButton("UPDATE", "update-btn-0", style: ButtonStyle.Success).Build());
+		await RespondAsync(components: new ComponentBuilder().WithButton("UPDATE", "update-btn-0", style: ButtonStyle.Success)
+  								     .WithButton("UPDATE", "deferred-update-btn-0", style: ButtonStyle.Danger).Build());
     	}
 
      	[ComponentInteraction("update-btn-*")]
@@ -235,7 +236,20 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
 	 	await interaction.UpdateAsync(x => 
    						{
    							x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
-							x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}").Build();
+							x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}")
+  								                             .WithButton("DEFERRED UPDATE", $"deferred-update-btn-{count + 1}", style: ButtonStyle.Danger).Build();
+	 					});
+	}
+
+ 	[ComponentInteraction("deferred-update-btn-*")]
+      	public async Task DeferredUpdateBtnAsync(int count)
+        {
+       		var interaction = (IComponentInteraction)Context.Interaction;
+	 	await interaction.UpdateAsync(x => 
+   						{
+   							x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
+							x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}")
+  								                             .WithButton("DEFERRED UPDATE", $"deferred-update-btn-{count + 1}", style: ButtonStyle.Danger).Build();
 	 					});
 	}
 
