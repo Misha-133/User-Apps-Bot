@@ -235,7 +235,7 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
 	 	await interaction.UpdateAsync(x => 
    						{
    							x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
-							x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}").Build()
+							x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}").Build();
 	 					});
 	}
 
