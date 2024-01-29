@@ -232,7 +232,7 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
       	public async Task UpdateBtnAsync()
         {
        		var interaction = (IComponentInteraction)Context.Interaction;
-	 	await interaction.UpdateAsync(x => x.Context = "Get Updated LOL https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+	 	await interaction.UpdateAsync(x => x.Content = "Get Updated LOL https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 	}
 
 }
