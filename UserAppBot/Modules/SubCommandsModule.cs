@@ -1,6 +1,6 @@
 ﻿namespace UserAppBot.Modules;
 
-[CommandContextType(ApplicationCommandContextType.BotDm, ApplicationCommandContextType.PrivateChannel, ApplicationCommandContextType.Guild)]
+[CommandContextType(InteractionContextType.BotDm, InteractionContextType.PrivateChannel, InteractionContextType.Guild)]
 [IntegrationType(ApplicationIntegrationType.UserInstall)]
 [Group("rp", "rp")]
 public class SubCommandsModule : InteractionModuleBase<SocketInteractionContext>

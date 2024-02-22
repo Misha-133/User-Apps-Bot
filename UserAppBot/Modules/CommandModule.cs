@@ -4,7 +4,7 @@ using org.mariuszgromada.math.mxparser;
 
 namespace UserAppBot.Modules;
 
-[CommandContextType(ApplicationCommandContextType.BotDm, ApplicationCommandContextType.PrivateChannel, ApplicationCommandContextType.Guild)]
+[CommandContextType(InteractionContextType.BotDm, InteractionContextType.PrivateChannel, InteractionContextType.Guild)]
 [IntegrationType(ApplicationIntegrationType.UserInstall, ApplicationIntegrationType.GuildInstall)]
 public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBase<SocketInteractionContext>
 {
