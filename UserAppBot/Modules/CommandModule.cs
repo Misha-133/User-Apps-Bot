@@ -134,7 +134,7 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
 				.Build());
 	}
 
-	[ComponentInteraction("do_not_click")]
+	[ComponentInteraction("nah_btn")]
 	public async Task NahBtn()
 	{
 		await RespondAsync(ephemeral: true, embed: new EmbedBuilder()
