@@ -32,7 +32,7 @@ public class DiscordBotService(DiscordSocketClient client, InteractionService in
         await interactions.RegisterCommandsGloballyAsync();
     }
 
-    public async Task LogAsync(LogMessage msg)
+    public Task LogAsync(LogMessage msg)
     {
         var severity = msg.Severity switch
         {
@@ -47,6 +47,6 @@ public class DiscordBotService(DiscordSocketClient client, InteractionService in
 
         logger.Log(severity, msg.Exception, msg.Message);
 
-        await Task.CompletedTask;
+        return Task.CompletedTask;
     }
 }
