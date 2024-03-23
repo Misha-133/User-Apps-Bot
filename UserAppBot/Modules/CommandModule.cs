@@ -61,6 +61,12 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
         await RespondAsync($"Hello There! | message: {message.Content}");
     }
 
+	[MessageCommand("Echo Ephemeral")]
+	public async Task EphemeralMessageCommand(IMessage message)
+	{
+		await RespondAsync($"Hello There! | message: {message.Content}", ephemeral: true);
+	}
+
     [MessageCommand("Math")]
     public async Task MathCommand(IMessage message)
     {
