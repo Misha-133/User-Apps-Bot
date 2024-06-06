@@ -36,6 +36,7 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
         await RespondAsync(message.Length.ToString());
     }
 
+
     [NsfwCommand(true)]
     [SlashCommand("nsfw-test", "Just a NSFW command")]
     public async Task NsfwCmd()
