@@ -44,6 +44,7 @@ builder.ConfigureServices((host, services) =>
     }));
 
     services.AddSingleton<InteractionHandler>();
+    services.AddSingleton<TetrisService>();
 
     services.AddHostedService<DiscordBotService>();
 });

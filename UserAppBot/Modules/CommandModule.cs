@@ -36,7 +36,6 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
         await RespondAsync(message.Length.ToString());
     }
 
-
     [NsfwCommand(true)]
     [SlashCommand("nsfw-test", "Just a NSFW command")]
     public async Task NsfwCmd()
@@ -59,14 +58,20 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
     [MessageCommand("Echo")]
     public async Task MessageCommand(IMessage message)
     {
-        await RespondAsync($"Hello There! | message: {message.Content}");
+        await RespondAsync($"Hello There! | message: {message.Content}", components: new ComponentBuilder().WithButton("Ping-Pong", "echo-ping-pong-false").WithButton("Ping-Pong E", "echo-ping-pong-true").Build());
     }
 
-	[MessageCommand("Echo Ephemeral")]
-	public async Task EphemeralMessageCommand(IMessage message)
-	{
-		await RespondAsync($"Hello There! | message: {message.Content}", ephemeral: true);
-	}
+    [MessageCommand("Echo Ephemeral")]
+    public async Task EphemeralMessageCommand(IMessage message)
+    {
+        await RespondAsync($"Hello There! | message: {message.Content}", ephemeral: true, components: new ComponentBuilder().WithButton("Ping-Pong", "echo-ping-pong-false").WithButton("Ping-Pong E", "echo-ping-pong-true").Build());
+    }
+
+    [ComponentInteraction("echo-ping-pong-*")]
+    public async Task EchoPingPongAsync(bool ephemeral)
+    {
+        await RespondAsync("Pong!", ephemeral: ephemeral);
+    }
 
     [MessageCommand("Math")]
     public async Task MathCommand(IMessage message)
@@ -273,11 +278,11 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
     {
         var interaction = (IComponentInteraction)Context.Interaction;
         await interaction.UpdateAsync(x =>
-                          {
-                              x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
-                              x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}")
-                                                                  .WithButton("DEFERRED UPDATE", $"deferred-update-btn-{count + 1}", style: ButtonStyle.Danger).Build();
-                          });
+        {
+            x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
+            x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}")
+                                                .WithButton("DEFERRED UPDATE", $"deferred-update-btn-{count + 1}", style: ButtonStyle.Danger).Build();
+        });
     }
 
     [ComponentInteraction("deferred-update-btn-*")]
@@ -287,11 +292,11 @@ public class CommandModule(ILogger<CommandModule> logger) : InteractionModuleBas
 
         await interaction.DeferAsync();
         await interaction.ModifyOriginalResponseAsync(x =>
-                          {
-                              x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
-                              x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}")
-                                                                  .WithButton("DEFERRED UPDATE", $"deferred-update-btn-{count + 1}", style: ButtonStyle.Danger).Build();
-                          });
+        {
+            x.Content = $"Get Updated LOL #{count} <https://www.youtube.com/watch?v=dQw4w9WgXcQ>";
+            x.Components = new ComponentBuilder().WithButton("UPDATE", $"update-btn-{count + 1}")
+                                                .WithButton("DEFERRED UPDATE", $"deferred-update-btn-{count + 1}", style: ButtonStyle.Danger).Build();
+        });
     }
 
 }
